@@ -3,16 +3,16 @@
 }
 
 :root {
-    --menu-width: 2.5cm;
-    --padding: 1cm;
-    --small-padding: .8cm;
-    --small-small-padding: .5cm;
+    --menu-width: 2.2cm;
+    --padding: .9cm;
+    --small-padding: .7cm;
+    --small-small-padding: .3cm;
     --img-width: 3cm;
     --line-width: 2px;
     --point-width: 23px;
     --small-point-width: 17px;
-    --title1-size: 80px;
-    --title2-size: 43px;
+    --title1-size: 72px;
+    --title2-size: 36px;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
     top: 0;
     left: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px solid black;
+    font-size: 11pt;
     box-sizing: content-box;
 }
 
@@ -31,8 +31,12 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+h1 {
+    font-size: 27px;
+}
+
 img.picture {
-    box-shadow: -5px 0px 30px 10px gray;
+    box-shadow: 0 0px 20px 5px rgb(0 0 0 / 25%);
     border-radius: 50%;
     position: absolute;
     width: var(--img-width);
@@ -43,6 +47,15 @@ img.picture {
     z-index: 10;
 }
 
+.img-text > * {
+    vertical-align: middle;
+}
+
+.img-text > img {
+    height: 20px;
+    margin-right: 5px;
+}
+
 .content {
     overflow: hidden;
     margin: 0;
@@ -51,8 +64,8 @@ img.picture {
     list-style-type: none;
     position: absolute;
     top: calc(var(--padding));
-    left: calc(var(--padding) + var(--menu-width) + var(--padding) + var(--img-width) + var(--small-small-padding));
-    width: calc(21cm - (var(--padding) + var(--menu-width) + var(--padding) + var(--img-width) + var(--small-small-padding) + var(--padding)));
+    left: calc(var(--padding) + var(--menu-width) + var(--padding) + var(--img-width) / 2 + var(--point-width) / 2 + var(--line-width) / 2 + var(--small-small-padding));
+    width: calc(21cm - (var(--padding) + var(--menu-width) + var(--padding) + var(--img-width) / 2 + var(--point-width) / 2 + var(--line-width) / 2 + var(--small-small-padding) + var(--padding)));
     max-height: calc(29.7cm - var(--padding) * 2);
 }
 
@@ -60,7 +73,18 @@ img.picture {
     margin-bottom: var(--small-padding);
 }
 
+.content > li.columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.content > li.columns > * {
+    flex: 1;
+}
+
 .content > li[data-level="0"] {
+    margin-left: calc(var(--img-width) / 2 - var(--point-width) / 2 - var(--line-width) / 2);
     margin-top: calc(var(--img-width) / 2 - var(--title2-size) / 2);
     margin-bottom: calc(var(--padding) * 2);
 }
@@ -88,8 +112,7 @@ img.picture {
 .container .point {
     position: absolute;
     border-radius: 50%;
-    box-shadow: -5px 0px 30px 10px gray;
-    background-color: black;
+    box-shadow: 0 0px 20px 5px rgb(0 0 0 / 25%), inset 0 0 0px 20px rgba(0, 0, 0);
     right: 0;
 }
 
@@ -99,7 +122,7 @@ img.picture {
 
 .container.level0 .title {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 27px;
     text-transform: uppercase;
 }
 
@@ -112,7 +135,6 @@ img.picture {
 }
 
 .container.level1 .title {
-    font-size: 17px;
     text-transform: uppercase;
 }
 
@@ -126,7 +148,6 @@ img.picture {
 }
 
 .container.level2 .title {
-    font-size: 16px;
     right: var(--small-point-width);
 }
 
@@ -137,11 +158,11 @@ img.picture {
 
 .line {
     width: var(--line-width);
-    background-color: black;
     height: calc(29.7cm - (var(--padding) + var(--img-width) / 2));
     position: absolute;
     top: calc(var(--padding) + var(--img-width) / 2);
     left: calc(var(--padding) + var(--menu-width) + var(--padding) + var(--img-width) / 2 - var(--line-width) / 2);
+    box-shadow: inset 0 0 0px 20px rgba(0, 0, 0);
 }
 
 .langs {
@@ -155,13 +176,13 @@ img.picture {
     position: relative;
     height: 15px;
     width: 90%;
-    background-color: #ddd;
+    box-shadow: inset 0 0 0px 20px #ddd;
 }
 
 .lang .bar {
     position: absolute;
     height: 100%;
-    background-color: blue;
+    box-shadow: inset 0 0 0px 20px #000090;
 }
 
 .lang .title {
